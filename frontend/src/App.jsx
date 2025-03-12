@@ -11,7 +11,7 @@ import NotificationsPage from "./pages/NotificationsPage";
 import NetworkPage from "./pages/NetworkPage";
 import PostPage from "./pages/PostPage";
 import ProfilePage from "./pages/ProfilePage";
-
+import CodePage from "./pages/CodePage"; // ✅ Import CodePage
 
 function App() {
 	const { data: authUser, isLoading } = useQuery({
@@ -42,7 +42,8 @@ function App() {
 				<Route path='/post/:postId' element={authUser ? <PostPage /> : <Navigate to={"/login"} />} />
 				<Route path='/profile/:username' element={authUser ? <ProfilePage /> : <Navigate to={"/login"} />} />
 				
-				
+				{/* ✅ Add Route for Code Page */}
+				<Route path='/code' element={authUser ? <CodePage /> : <Navigate to={"/login"} />} />
 			</Routes>
 			<Toaster />
 		</Layout>

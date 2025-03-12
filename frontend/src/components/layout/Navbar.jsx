@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { axiosInstance } from "../../lib/axios";
 import { Link } from "react-router-dom";
-import { Bell, Home, LogOut, User, Users } from "lucide-react";
+import { Bell, Home, LogOut, User, Users, Code } from "lucide-react"; // ✅ Import Code Icon
 
 const Navbar = () => {
 	const { data: authUser } = useQuery({ queryKey: ["authUser"] });
@@ -51,7 +51,7 @@ const Navbar = () => {
 									{unreadConnectionRequestsCount > 0 && (
 										<span
 											className='absolute -top-1 -right-1 md:right-4 bg-blue-500 text-white text-xs 
-										rounded-full size-3 md:size-4 flex items-center justify-center'
+											rounded-full size-3 md:size-4 flex items-center justify-center'
 										>
 											{unreadConnectionRequestsCount}
 										</span>
@@ -63,16 +63,20 @@ const Navbar = () => {
 									{unreadNotificationCount > 0 && (
 										<span
 											className='absolute -top-1 -right-1 md:right-4 bg-blue-500 text-white text-xs 
-										rounded-full size-3 md:size-4 flex items-center justify-center'
+											rounded-full size-3 md:size-4 flex items-center justify-center'
 										>
 											{unreadNotificationCount}
 										</span>
 									)}
 								</Link>
-								<Link
-									to={`/profile/${authUser.username}`}
-									className='text-neutral flex flex-col items-center'
-								>
+
+								{/* ✅ Added CodeArea Link */}
+								<Link to='/code' className='text-neutral flex flex-col items-center'>
+									<Code size={20} />
+									<span className='text-xs hidden md:block'>Code Area</span>
+								</Link>
+
+								<Link to={`/profile/${authUser.username}`} className='text-neutral flex flex-col items-center'>
 									<User size={20} />
 									<span className='text-xs hidden md:block'>Me</span>
 								</Link>
@@ -100,4 +104,5 @@ const Navbar = () => {
 		</nav>
 	);
 };
+
 export default Navbar;
