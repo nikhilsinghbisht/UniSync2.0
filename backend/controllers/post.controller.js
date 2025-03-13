@@ -5,17 +5,27 @@ import { sendCommentNotificationEmail } from "../emails/emailHandlers.js";
 
 export const getFeedPosts = async (req, res) => {
 	try {
-		const posts = await Post.find({ author: { $in: [...req.user.connections, req.user._id] } })
-			.populate("author", "name username profilePicture headline")
-			.populate("comments.user", "name profilePicture")
+		const posts = await Post.find({
+			author: { $in: [...req.user.connections, req.user._id] }
+		})
+			.populate("author", "name username profilePicture")
 			.sort({ createdAt: -1 });
 
-		res.status(200).json(posts);
+		const codes = await Code.find({
+			author: { $in: [...req.user.connections, req.user._id] }
+		})
+			.populate("author", "name username profilePicture")
+			.sort({ createdAt: -1 });
+
+		const feed = [...posts, ...codes].sort((a, b) => b.createdAt - a.createdAt);
+
+		res.status(200).json(feed);
 	} catch (error) {
-		console.error("Error in getFeedPosts controller:", error);
+		console.error("Error in getFeedPosts:", error);
 		res.status(500).json({ message: "Server error" });
 	}
 };
+
 
 export const createPost = async (req, res) => {
 	try {
