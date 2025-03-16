@@ -6,6 +6,10 @@ export const submitCode = async (req, res) => {
 
         if (!code) return res.status(400).json({ message: "Code is required" });
 
+        // Check if the exact same code already exists for the user
+        const existingCode = await Code.findOne({ code, author: req.user._id });
+        if (existingCode) return res.status(400).json({ message: "Duplicate code entry" });
+
         const newCode = new Code({
             description,
             code,
@@ -13,13 +17,8 @@ export const submitCode = async (req, res) => {
         });
 
         await newCode.save();
-        const updatedFeed = await Code.find({
-            author: { $in: [...req.user.connections, req.user._id] }
-        })
-            .populate("author", "name username profilePicture")
-            .sort({ createdAt: -1 });
 
-        res.status(201).json({ message: "Code submitted successfully", feed: updatedFeed });
+        res.status(201).json({ message: "Code submitted successfully", code: newCode });
     } catch (error) {
         console.error("Error in submitCode:", error);
         res.status(500).json({ message: "Failed to submit code. Please try again later." });
@@ -43,9 +42,12 @@ export const getAllCodes = async (req, res) => {
 
 export const getCodeFeed = async (req, res) => {
     try {
-        const feed = await Code.find({
-            author: { $in: [...req.user.connections, req.user._id] }
-        })
+        const userIds = [...req.user.connections, req.user._id];
+
+        // Ensure unique user IDs before querying
+        const uniqueUserIds = [...new Set(userIds)];
+
+        const feed = await Code.find({ author: { $in: uniqueUserIds } })
             .populate("author", "name username profilePicture")
             .sort({ createdAt: -1 });
 

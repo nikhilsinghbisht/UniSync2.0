@@ -35,7 +35,7 @@ const Navbar = () => {
 				<div className='flex justify-between items-center py-3'>
 					<div className='flex items-center space-x-4'>
 						<Link to='/'>
-							<img className='h-8 rounded' src='/small-logo.png' alt='LinkedIn' />
+							<img className='h-8 rounded' src='/logo_br.png' alt='Unisync' />
 						</Link>
 					</div>
 					<div className='flex items-center gap-2 md:gap-6'>
@@ -93,7 +93,8 @@ const Navbar = () => {
 								<Link to='/login' className='btn btn-ghost'>
 									Sign In
 								</Link>
-								<Link to='/signup' className='btn btn-primary'>
+								<Link to='/signup' className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#d95a44] hover:bg-[#c24e3a]"
+								>
 									Join now
 								</Link>
 							</>

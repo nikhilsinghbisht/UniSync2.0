@@ -1,3 +1,4 @@
+import Code from "../models/code.model.js";
 import cloudinary from "../lib/cloudinary.js";
 import Post from "../models/post.model.js";
 import Notification from "../models/notification.model.js";
@@ -30,6 +31,17 @@ export const getFeedPosts = async (req, res) => {
 export const createPost = async (req, res) => {
 	try {
 		const { content, image } = req.body;
+
+		// Validate: If an image is present, description (content) is mandatory
+		if (image && !content) {
+			return res.status(400).json({ message: "Description is required when an image is provided." });
+		}
+
+		// Validate: At least one of content or image must be present
+		if (!content && !image) {
+			return res.status(400).json({ message: "Please add Description or an image." });
+		}
+
 		let newPost;
 
 		if (image) {
@@ -54,6 +66,7 @@ export const createPost = async (req, res) => {
 		res.status(500).json({ message: "Server error" });
 	}
 };
+
 
 export const deletePost = async (req, res) => {
 	try {

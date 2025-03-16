@@ -92,7 +92,7 @@ const PostCreation = ({ user }) => {
 				</div>
 
 				<button
-					className='bg-primary text-white rounded-lg px-4 py-2 hover:bg-primary-dark transition-colors duration-200'
+					className='className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#d95a44] hover:bg-[#c24e3a]"'
 					onClick={handlePostCreation}
 					disabled={isPending}
 				>

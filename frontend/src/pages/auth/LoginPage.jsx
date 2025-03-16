@@ -5,7 +5,7 @@ const LoginPage = () => {
 	return (
 		<div className='min-h-screen flex flex-col justify-center py-12 sm:px-6 lg:px-8'>
 			<div className='sm:mx-auto sm:w-full sm:max-w-md'>
-				<img className='mx-auto h-40 w-auto' src='/logo.svg' alt='LinkedIn' />
+				<img className='mx-auto h-40 w-auto' src='/logo.png' alt='Unisync' />
 				<h2 className=' text-center text-3xl font-extrabold text-gray-900'>Sign in to your account</h2>
 			</div>
 
@@ -24,7 +24,7 @@ const LoginPage = () => {
 						<div className='mt-6'>
 							<Link
 								to='/signup'
-								className='w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-blue-600 bg-white hover:bg-gray-50'
+								className='w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#d95a44] hover:bg-gray-50'
 							>
 								Join now
 							</Link>
