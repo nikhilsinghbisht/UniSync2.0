@@ -47,7 +47,7 @@ const HomePage = () => {
             <CodePost
               key={post._id}
               post={post}
-            /> // ✅ Render code posts differently
+            /> 
           ) : (
             <Post
               key={post._id}

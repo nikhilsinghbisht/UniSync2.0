@@ -5,6 +5,7 @@ import { axiosInstance } from "../../lib/axios";
 import { toast } from "react-hot-toast";
 import CodeMirror from "@uiw/react-codemirror";
 import { javascript } from "@codemirror/lang-javascript";
+// import Codepost from "../CodePost";
 
 const CodeArea = () => {
   const queryClient = useQueryClient();
@@ -36,6 +37,7 @@ const CodeArea = () => {
   });
 
   return (
+    <>
     <div className="bg-white shadow-md p-4 rounded-lg w-full max-w-2xl mx-auto">
       <h2 className="text-lg font-semibold mb-4">Share Your Code</h2>
 
@@ -64,7 +66,13 @@ const CodeArea = () => {
       >
         {isLoading ? "Submitting..." : "Post Code"}
       </button>
+
+
+    {/* <Codepost /> */}
+
     </div>
+   
+    </>
   );
 };
 
