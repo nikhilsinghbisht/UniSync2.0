@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema(
 		},
 		headline: {
 			type: String,
-			default: "Linkedin User",
+			default: "Unisync User",
 		},
 		location: {
 			type: String,

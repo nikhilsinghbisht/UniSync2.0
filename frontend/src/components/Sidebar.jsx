@@ -28,7 +28,7 @@ export default function Sidebar({ user }) {
 						<li>
 							<Link
 								to='/'
-								className='flex items-center py-2 px-4 rounded-md hover:bg-primary hover:text-white transition-colors'
+								className='flex items-center py-2 px-4 rounded-md hover:bg-[#d95a44] hover:text-white transition-colors'
 							>
 								<Home className='mr-2' size={20} /> Home
 							</Link>
@@ -36,7 +36,7 @@ export default function Sidebar({ user }) {
 						<li>
 							<Link
 								to='/network'
-								className='flex items-center py-2 px-4 rounded-md hover:bg-primary hover:text-white transition-colors'
+								className='flex items-center py-2 px-4 rounded-md hover:bg-[#d95a44] hover:text-white transition-colors'
 							>
 								<UserPlus className='mr-2' size={20} /> My Network
 							</Link>
@@ -44,7 +44,7 @@ export default function Sidebar({ user }) {
 						<li>
 							<Link
 								to='/notifications'
-								className='flex items-center py-2 px-4 rounded-md hover:bg-primary hover:text-white transition-colors'
+								className='flex items-center py-2 px-4 rounded-md hover:bg-[#d95a44] hover:text-white transition-colors'
 							>
 								<Bell className='mr-2' size={20} /> Notifications
 							</Link>
